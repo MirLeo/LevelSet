@@ -19,7 +19,7 @@ Normal_y(2:nx-1,2:ny-1) = (phi(2:nx-1,3:ny) - phi(2:nx-1,1:ny-2))./gradPhiNorm;
 %% find the steady state to level set 
 
 TOL =1e-3;
-MaxIter = 100;
+MaxIter = 300;
 iter = 0;
 difference = 1;
 
@@ -51,7 +51,8 @@ while (difference > TOL && iter < MaxIter)
     difference = norm(phi - newPhi);
     phi = newPhi;
 end
-display(sprintf('Reconstructing level set function, time = %f, number of iterations: %d', k*dt, iter) )
+display(sprintf('Reconstructing level set function, time = %f, difference:%g, number of iterations: %d'...
+    , k*dt, difference, iter) )
 end
 
 %% Level Set evolution
