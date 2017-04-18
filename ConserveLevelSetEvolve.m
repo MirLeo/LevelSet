@@ -51,6 +51,7 @@ while (difference > TOL && iter < MaxIter)
     difference = norm(phi - newPhi);
     phi = newPhi;
 end
+display(sprintf('Reconstructing level set function, time = %f, number of iterations: %d', k*dt, iter) )
 end
 
 %% Level Set evolution
